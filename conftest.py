@@ -34,7 +34,7 @@ def driver(chrome_options):
 
 
 @pytest.fixture
-def open_manager_page(driver):
+def open_manager_page(driver) -> ManagerPage:
     page = ManagerPage(driver, Urls.MANAGER_PAGE)
     page.open()
     return page

@@ -63,3 +63,10 @@ class BasePage:
             return True
         except NoAlertPresentException:
             return False
+        
+    def alert_ok(self):
+        Alert(self.driver).accept()
+        
+    def get_list_of_objects(self, locator):
+        return self.elements_are_visible(locator)
+    

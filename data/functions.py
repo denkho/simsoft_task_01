@@ -39,3 +39,20 @@ def postcode_to_name(postcode) -> str:
 
 def generate_last_name() -> str:
     return Faker().last_name()
+
+
+def generate_raw_list_of_text_from_objects(elements):
+    return [element.text for element in elements] 
+
+def generate_dict_of_customers(k, v) -> dict:
+    k = generate_raw_list_of_text_from_objects(k)
+    v = generate_raw_list_of_text_from_objects(v)
+    return [dict(zip(k, v[i:i+3])) for i in range(0, len(v), 3)]
+    
+
+def find_customer_in_list_of_customers(customers_list, fname, lname, pcode):
+    for el in customers_list:
+        if el['First Name'] == fname:
+            if el['Last Name'] == lname and el['Post Code'] == pcode:
+                return True
+    return False
