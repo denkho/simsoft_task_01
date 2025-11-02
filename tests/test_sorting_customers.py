@@ -1,4 +1,3 @@
-from socket import if_indextoname
 import allure
 from data import functions
 
