@@ -41,3 +41,6 @@ class ManagerPage(BasePage):
 
     def get_list_of_customers(self):
         return self.get_list_of_objects(locators.ManagerPage.CUSTOMERS_INFO)
+    
+    def click_on_first_name_in_customers_table_header(self):
+        self.click(locators.ManagerPage.TABLE_HEADER_FIRST_NAME)
