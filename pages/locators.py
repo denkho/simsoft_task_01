@@ -2,6 +2,7 @@ class ManagerPage:
     BUTTON_ADD_CUSTOMER = ('xpath', '//button[@ng-click="addCust()"]')
     BUTTON_CUSTOMERS = ('xpath', '//button[@ng-click="showCust()"]')
     BUTTON_ADD_CUSTOMER_FIELD = ('xpath', '//button[@type="submit" and text()="Add Customer"]')
+    BUTTON_DELETE_CUSTOMER = ('xpath', '//button[@ng-click="deleteCust(cust)"]')
 
     FIELD_FIRST_NAME = ('xpath', '//input[@ng-model="fName"]')
     FIELD_LAST_NAME = ('xpath', '//input[@ng-model="lName"]')

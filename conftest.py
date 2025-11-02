@@ -40,6 +40,7 @@ def open_manager_page(driver) -> ManagerPage:
     page.open()
     return page
 
+
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     outcome = yield
