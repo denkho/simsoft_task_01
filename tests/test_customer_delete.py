@@ -39,7 +39,7 @@ def test_customer_delete(open_manager_page):
             customer_to_delete[0],
             customer_to_delete[1],
             customer_to_delete[2]
-        ), f"Клиент с именем {customer_to_delete[0] + " " + customer_to_delete[1],} не удален из списка"
+        ), f"Клиент с именем {customer_to_delete[0] + ' ' + customer_to_delete[1],} не удален из списка"
 
 
 @allure.suite("Test Suite 3. Customers — Удаление клиента")
