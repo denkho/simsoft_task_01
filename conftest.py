@@ -9,8 +9,7 @@ from data.urls import Urls
 @pytest.fixture
 def chrome_options():
     options = webdriver.ChromeOptions()
-    # options.page_load_strategy = "eager"
-    # options.add_argument("--headless")
+    options.add_argument("--headless")
     options.add_argument("--incognito")
     options.add_argument("--start-maximized")
     options.add_argument("--ignore-certificate-errors")
