@@ -100,3 +100,20 @@ def generate_delete_button_xpath(first_name: str, last_name: str) -> str:
         '//button[@ng-click="deleteCust(cust)"]'
     )
     return xpath
+
+
+def get_client_name_to_delete(lst: list[dict]) -> str:
+    """
+    Получить из таблицы Customers список имен. Узнать длину каждого имени, затем найти среднее
+    арифметическое получившихся длин и удалить клиента с тем именем, у которого длина будет ближе
+    к среднему арифметическому
+    Пример: список имен
+    Albus , Neville , Voldemort. Длины имен 5 , 7 , 9 соответственно.
+    Среднее арифметическое длин 7 , удаляем имя Neville
+    """
+    names = [n["First Name"] for n in lst]
+    len_names = [len(n) for n in names]
+    avg_len = sum(len_names) / len(len_names)
+    name = min(names, key=lambda n: abs(len(n) - avg_len))
+    last_name, postcode = [(x["Last Name"], x["Post Code"]) for x in lst if x["First Name"] == name][0]
+    return name, last_name, postcode
