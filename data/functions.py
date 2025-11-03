@@ -55,4 +55,9 @@ def find_customer_in_list_of_customers(customers_list, fname, lname, pcode):
         if el['First Name'] == fname:
             if el['Last Name'] == lname and el['Post Code'] == pcode:
                 return True
-    return False
+
+def if_list_is_sorted_descendingly(lst: list[dict], key: str) -> bool:
+    return all(lst[i][key] >= lst[i + 1][key] for i in range(len(lst) - 1))
+
+def get_any_customer_credentials_from_customers(lst: list[dict]):
+    return lst[random.randint(0, len(lst) - 1)]

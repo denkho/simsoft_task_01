@@ -10,4 +10,7 @@ class ManagerPage:
     FIELD_SEARCH_CUSTOMER = ('xpath', '//input[@ng-model="searchCustomer"]')
 
     HEADERS_OF_CUSTOMERS_TABLE = ('xpath', '//thead/tr/td/a')
+
+    TABLE_HEADER_FIRST_NAME = ('xpath', '//thead/tr/td/a[contains(text(), "First Name")]')
+
     CUSTOMERS_INFO = ('xpath', '//tr[@class="ng-scope"]/td[@class="ng-binding"]')

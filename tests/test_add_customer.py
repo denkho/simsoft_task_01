@@ -1,5 +1,4 @@
 from functools import partial
-import time
 import allure
 import random
 from data import functions
