@@ -18,18 +18,16 @@ def test_sort_customers_descending(open_manager_page):
         page.click_on_first_name_in_customers_table_header()
 
     with allure.step("Проверяем сортировку списка"):
-        headers_of_customers_table = page.get_list_of_headers_in_customers_table()
-        list_of_customers = page.get_list_of_customers()
         customers = functions.generate_dict_of_customers(
-            headers_of_customers_table, list_of_customers
+            page.get_list_of_headers_in_customers_table(),
+            page.get_list_of_customers(),
         )
 
         if not functions.if_list_is_sorted_descendingly(customers, "First Name"):
             page.click_on_first_name_in_customers_table_header()
-            headers_of_customers_table = page.get_list_of_headers_in_customers_table()
-            list_of_customers = page.get_list_of_customers()
             customers = functions.generate_dict_of_customers(
-                headers_of_customers_table, list_of_customers
+                page.get_list_of_headers_in_customers_table(),
+                page.get_list_of_customers(),
             )
 
         assert functions.if_list_is_sorted_descendingly(
@@ -53,18 +51,16 @@ def test_sort_customers_ascending(open_manager_page):
         page.click_on_first_name_in_customers_table_header()
 
     with allure.step("Проверяем сортировку списка"):
-        headers_of_customers_table = page.get_list_of_headers_in_customers_table()
-        list_of_customers = page.get_list_of_customers()
         customers = functions.generate_dict_of_customers(
-            headers_of_customers_table, list_of_customers
+            page.get_list_of_headers_in_customers_table(),
+            page.get_list_of_customers(),
         )
 
         if functions.if_list_is_sorted_descendingly(customers, "First Name"):
             page.click_on_first_name_in_customers_table_header()
-            headers_of_customers_table = page.get_list_of_headers_in_customers_table()
-            list_of_customers = page.get_list_of_customers()
             customers = functions.generate_dict_of_customers(
-                headers_of_customers_table, list_of_customers
+                page.get_list_of_headers_in_customers_table(),
+                page.get_list_of_customers(),
             )
 
         assert not functions.if_list_is_sorted_descendingly(
@@ -107,11 +103,9 @@ def test_sort_customers_with_same_first_name(open_manager_page):
 
         if functions.if_list_is_sorted_descendingly(customers, "First Name"):
             page.click_on_first_name_in_customers_table_header()
-            headers_of_customers_table = page.get_list_of_headers_in_customers_table()
-            list_of_customers = page.get_list_of_customers()
-            customers = functions.generate_dict_of_customers(
-                headers_of_customers_table, list_of_customers
-            )
+        customers = functions.generate_dict_of_customers(
+            page.get_list_of_headers_in_customers_table(), page.get_list_of_customers()
+        )
 
         assert not functions.if_list_is_sorted_descendingly(
             customers, "First Name"

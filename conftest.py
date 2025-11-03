@@ -9,8 +9,7 @@ from data.urls import Urls
 @pytest.fixture
 def chrome_options():
     options = webdriver.ChromeOptions()
-    # options.page_load_strategy = "eager"
-    # options.add_argument("--headless")
+    options.add_argument("--headless")
     options.add_argument("--incognito")
     options.add_argument("--start-maximized")
     options.add_argument("--ignore-certificate-errors")
@@ -39,6 +38,7 @@ def open_manager_page(driver) -> ManagerPage:
     page = ManagerPage(driver, Urls.MANAGER_PAGE)
     page.open()
     return page
+
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):

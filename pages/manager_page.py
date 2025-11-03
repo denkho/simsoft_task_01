@@ -41,6 +41,18 @@ class ManagerPage(BasePage):
 
     def get_list_of_customers(self):
         return self.get_list_of_objects(locators.ManagerPage.CUSTOMERS_INFO)
-    
+
     def click_on_first_name_in_customers_table_header(self):
         self.click(locators.ManagerPage.TABLE_HEADER_FIRST_NAME)
+
+    def delete_customer_by_name(self, first_name, last_name):
+        locator_xpath_of_button = data.functions.generate_delete_button_xpath(
+            first_name, last_name
+        )
+        self.click(("xpath", locator_xpath_of_button))
+
+    def click_delete_button(self):
+        self.click(locators.ManagerPage.BUTTON_DELETE_CUSTOMER)
+
+    def check_if_delete_button_is_absent(self):
+        return self.element_is_absent(locators.ManagerPage.BUTTON_DELETE_CUSTOMER)
