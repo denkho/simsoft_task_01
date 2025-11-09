@@ -3,15 +3,20 @@ import pytest
 from selenium import webdriver
 
 from pages.manager_page import ManagerPage
-from data.urls import Urls
+from config import Config
 
 
 @pytest.fixture
 def chrome_options():
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless")
-    options.add_argument("--incognito")
-    options.add_argument("--start-maximized")
+
+    if Config.HEADLESS:
+        options.add_argument("--headless")
+    if Config.INCOGNITO:
+        options.add_argument("--incognito")
+    if Config.START_MAXIMIZED:
+        options.add_argument("--start-maximized")
+
     options.add_argument("--ignore-certificate-errors")
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
@@ -27,6 +32,7 @@ def driver(chrome_options):
     print("\nStarting browser for tests...")
 
     driver = webdriver.Chrome(options=chrome_options)
+    driver.implicitly_wait(Config.IMPLICIT_WAIT)
     yield driver
 
     print("\nQuiting browser...")
@@ -35,7 +41,7 @@ def driver(chrome_options):
 
 @pytest.fixture
 def open_manager_page(driver) -> ManagerPage:
-    page = ManagerPage(driver, Urls.MANAGER_PAGE)
+    page = ManagerPage(driver, Config.MANAGER_PAGE)
     page.open()
     return page
 

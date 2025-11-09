@@ -4,11 +4,12 @@ from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoAlertPresentException, TimeoutException
+from config import Config
 
 
 class BasePage:
 
-    TIMEOUT = 10
+    TIMEOUT = Config.EXPLICIT_WAIT
 
     def __init__(self, driver: WebDriver, url):
         self.driver = driver
