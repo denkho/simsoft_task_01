@@ -2,7 +2,7 @@ name: Run Pytest with Allure
 
 on:
   push:
-    branches: [ test_suite_3 ]
+    branches: [ tests ]
   pull_request:
     branches: [ main ]
 
